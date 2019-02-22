@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<meta charset="UTF-8" />
+		<title>Lista de Lembretes</title>
+	</h:head>
+	
+	<h:body style="padding: 60px">
+		<b:navBar brand="Cadastro de Lembrete" action="#{lembreteBean.navigation()}" fixed="top">
+			<b:navbarLinks>
+				<b:navLink value="Cadastrar" action="#{lembreteBean.navigation()}"></b:navLink>
+				<b:navLink value="Visualizar Lembretes" action="/lembretes"></b:navLink>
+			</b:navbarLinks>
+		</b:navBar>
+		<b:container id="cont">
+			<b:jumbotron id="jumb">
+				<h:form>
+					<b:dataTable value="#{lembreteBean.loadReminders()}" var="reminder">
+						<b:dataTableColumn label="Título" value="#{reminder.titulo}"/>
+						<b:dataTableColumn label="Descrição" value="#{reminder.descricao}"/>
+						<b:dataTableColumn label="Data" value="#{reminder.formatDate()}"/>
+					</b:dataTable>
+				</h:form>
+			</b:jumbotron>
+		</b:container>
+	</h:body>
+</html>
